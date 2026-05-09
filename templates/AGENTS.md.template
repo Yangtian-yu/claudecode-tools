@@ -1,0 +1,82 @@
+# {Project Name}
+
+{One-line description of what this project is and why it exists.}
+
+> **For AI agents**: This is your entry point. Read it fully before doing anything else.
+> Then load `CONTEXT.md` (domain language) and `docs/adr/` (decisions you must not relitigate).
+
+## Setup
+
+```bash
+{install command}      # e.g., pnpm install
+{dev command}          # e.g., pnpm dev
+{test command}         # e.g., pnpm test
+{lint command}         # e.g., pnpm lint
+```
+
+## Project map
+
+- `{src/}` — {what lives here}
+- `{tests/}` — {what lives here}
+- `CONTEXT.md` — domain vocabulary; read before naming anything
+- `docs/adr/` — architectural decisions; read before proposing alternatives
+
+## Code conventions
+
+- {Language/framework, e.g., "TypeScript strict mode, no `any`"}
+- {Style, e.g., "Single quotes, trailing commas, 2-space indent"}
+- {Patterns to prefer, e.g., "Functional components, no class components"}
+- {Patterns to avoid, e.g., "No global state outside the chosen store"}
+
+## Testing
+
+- {How to run a single test file}
+- {Coverage expectations, if any}
+- {What must have tests}
+
+## Commit & PR
+
+- Commit format: {e.g., conventional commits — `feat:`, `fix:`, `refactor:`}
+- Branch naming: {e.g., `feat/short-description`}
+- Before opening a PR: {tests pass, lint clean, ADR written for architectural changes}
+
+## Things AI should NOT do here
+
+List specific anti-patterns, off-limits paths, and settled decisions.
+**Negative constraints prevent AI from re-litigating the same battles.**
+
+- {e.g., "Don't add new state libraries — Pinia is chosen (ADR-0003)"}
+- {e.g., "Don't edit `src/generated/` — regenerate via `pnpm codegen`"}
+- {e.g., "Don't propose framework migrations — see ADR-0001"}
+
+<!-- Example filled-in version:
+
+# Fishing Log App
+
+Offline-first PWA for recording fishing trips, with photo signatures and backend sync.
+
+## Setup
+```bash
+pnpm install
+pnpm dev          # localhost:5173
+pnpm test         # vitest
+pnpm lint         # eslint + prettier
+```
+
+## Project map
+- `src/components/` — Vue 3 SFCs
+- `src/db/` — IndexedDB wrappers (see ADR-0002)
+- `CONTEXT.md` — LogMes, LogConfig, Sync are the source of truth
+- `docs/adr/` — read before proposing storage/state changes
+
+## Code conventions
+- Vue 3 Composition API only — no Options API
+- `<script setup lang="ts">` with strict TypeScript
+- Pinia for state, never globals
+
+## Things AI should NOT do here
+- Don't suggest localStorage — see ADR-0002
+- Don't add Vuex — Pinia is chosen
+- Don't edit `src/api/generated/` — run `pnpm codegen`
+
+-->

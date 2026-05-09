@@ -33,7 +33,7 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 ```markdown
 # [Feature Name] Implementation Plan
 
-> **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
+> **For Claude:** Execute this plan task-by-task in auto mode. Finish a task, commit, move to the next without asking. See "Auto-Execute Mode" at the end of the writing-plans skill for stop conditions.
 
 **Goal:** [One sentence describing what this builds]
 
@@ -94,23 +94,24 @@ git commit -m "feat: add specific feature"
 - Reference relevant skills with @ syntax
 - DRY, YAGNI, TDD, frequent commits
 
-## Execution Handoff
+## Auto-Execute Mode
 
-After saving the plan, offer execution choice:
+After saving the plan, **immediately start executing it. Do NOT ask the user which mode to run, do NOT pause between tasks for confirmation.**
 
-**"Plan complete and saved to `docs/plans/<filename>.md`. Two execution options:**
+For each task in order:
+1. Carry out every step in the task (write failing test → run → minimal impl → run → commit).
+2. Run the `git commit` defined in the task's final step. One commit per task.
+3. Move to the next task without asking.
 
-**1. Subagent-Driven (this session)** - I dispatch fresh subagent per task, review between tasks, fast iteration
+**Only stop and ask the user when:**
+- A test fails in a way the plan didn't anticipate, or the fix is non-obvious.
+- A file/path in the plan doesn't exist or conflicts with current code unexpectedly.
+- The plan itself turns out to be internally inconsistent or wrong.
+- The user has interrupted with new instructions.
 
-**2. Parallel Session (separate)** - Open new session with executing-plans, batch execution with checkpoints
+**When all tasks are done**, report a brief summary:
+- What shipped (1–2 sentences)
+- List of commit hashes (`git log --oneline <base>..HEAD`)
+- Any deviations from the plan
 
-**Which approach?"**
-
-**If Subagent-Driven chosen:**
-- **REQUIRED SUB-SKILL:** Use superpowers:subagent-driven-development
-- Stay in this session
-- Fresh subagent per task + code review
-
-**If Parallel Session chosen:**
-- Guide them to open new session in worktree
-- **REQUIRED SUB-SKILL:** New session uses superpowers:executing-plans
+Do not append a "next steps" or "want me to continue?" question — the plan is the contract.

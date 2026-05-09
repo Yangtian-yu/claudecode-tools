@@ -63,11 +63,23 @@ You MUST complete each phase before proceeding to the next.
    - Does it happen every time?
    - If not reproducible → gather more data, don't guess
 
-3. **Check Recent Changes**
-   - What changed that could cause this?
-   - Git diff, recent commits
-   - New dependencies, config changes
-   - Environmental differences
+3. **Check Recent Changes (mandatory before any hypothesis)**
+
+   Pick the command matching your situation and run it — don't skip with a glance at `git status`:
+
+   | Situation | Required command |
+   |---|---|
+   | Don't know what changed recently | `git log --oneline -20` |
+   | Suspect a specific file | `git log -p <file>` — line-level history |
+   | A specific line looks wrong | `git blame <file>` — who/why introduced it |
+   | "Worked before, broken now" | `git bisect start` — binary search the regression |
+   | Environment/config drift | `git diff <last-working-ref>` |
+   | New dependency suspected | `git log -p package.json` (or equivalent) |
+
+   **You have not completed this step until you can answer:**
+   "Of the last N commits, which is most likely related to this bug, and why?"
+
+   If the answer is "none look related," say so explicitly — that itself is evidence (bug is older than the window, or env-only).
 
 4. **Gather Evidence in Multi-Component Systems**
 
