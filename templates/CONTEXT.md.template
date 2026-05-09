@@ -1,0 +1,39 @@
+# {Project Name}
+
+{One or two sentence description of what this project is and why it exists.}
+
+## Language
+
+**{Term}**:
+{A concise, one-sentence definition of what it IS — not what it does.}
+_Avoid_: {synonym1}, {synonym2}
+
+<!-- Example:
+
+**LogConfig**:
+The configuration object storing user-selected form parameters (net type, fishing area) for the current session.
+_Avoid_: formSettings, logOptions, logParams
+
+**LogMes**:
+A complete fishing log record stored in IndexedDB, containing all form data and signature images.
+_Avoid_: logData, logInfo, formData
+
+**Sync**:
+The operation of uploading local IndexedDB data to the backend API.
+_Avoid_: "copy data", "transfer", "push"
+
+-->
+
+## Relationships
+
+- A **{TermA}** contains many **{TermB}**s
+- A **{TermB}** belongs to exactly one **{TermA}**
+
+## Example dialogue
+
+> **Dev:** "When a **{TermA}** does X, does **{TermB}** also change?"
+> **Domain expert:** "No — **{TermB}** only updates when Y happens."
+
+## Flagged ambiguities
+
+- "{word}" was previously used to mean both **{TermA}** and **{TermB}** — resolved: {how you resolved it}.
