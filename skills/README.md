@@ -45,6 +45,7 @@
 
 | 技能 | 说明 |
 |------|------|
+| `find-skills/` | 发现和安装开源 Agent 技能（skills.sh 生态） |
 | `defuddle/` | 网页内容提取（清洁 Markdown，节省 Token） |
 | `json-canvas/` | Obsidian Canvas 文件创建与编辑 |
 | `obsidian-markdown/` | Obsidian 风格 Markdown（wikilinks、callouts） |

@@ -28,6 +28,7 @@ claudecode-tools/
 │   ├── design/                # 综合设计（Logo、CIP、幻灯片）
 │   ├── design-system/         # 设计系统 Token 架构
 │   ├── defuddle/              # 网页内容提取
+│   ├── find-skills/           # 发现和安装开源 Agent 技能
 │   ├── json-canvas/           # Obsidian Canvas 文件
 │   ├── obsidian-markdown/     # Obsidian Markdown 语法
 │   ├── obsidian-bases/        # Obsidian Bases 数据库视图
